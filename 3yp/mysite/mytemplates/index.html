@@ -1,0 +1,49 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <title>{% block title %}User test{% endblock %}</title>
+    <!--for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}style.css" />
+    <link rel="stylesheet" type="text/css" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+</head>
+
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="/">Energapp</a>
+                {% block header %}
+                {% if user.is_authenticated %}
+                <ul class="nav">
+                    <li class="active"><a href="#">{% trans "Logged in" %}: {{ user.username }} </a></li>
+                    <li><a href="/upload/">{{ "Upload your CVS" }}</a></li>
+                    <li><a href="{% url auth_password_change %}">{% trans "Change password" %}</a></li>
+                    <li><a href="{% url auth_logout %}">{% trans "Log out" %}</a></li>
+                </ul>
+                {% else %}
+                <ul class="nav">
+                    <li><a href="{% url registration_register %}">{% trans "Register" %}</a></li>
+                    <li><a href="{% url auth_login %}">{% trans "Log in" %}</a></li>
+                </ul>
+                {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    {% block content %}
+    <p>Hello!</p>
+    <p>Our Energapp will let you track and share your energy usage with friends.</p>
+    <p>Useful tip: If you share your energy consumption with your friends, our <a href="/">study</a> shows you can reduce your consumption by 3%! </p>
+    {% endblock %}
+</div>
+</body>
+
+</html>
