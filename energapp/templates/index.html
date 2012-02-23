@@ -45,8 +45,10 @@
                 </ul>
                 {% else %}
                 <ul class="nav">
+					{% comment %}
                     <li><a href="{% url registration_register %}">{% trans "Register" %}</a></li>
                     <li><a href="{% url auth_login %}">{% trans "Log in" %}</a></li>
+                    {% endcomment %}
                 </ul>
                 {% endif %}
                 <ul class="nav">
