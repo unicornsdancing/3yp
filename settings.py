@@ -131,13 +131,8 @@ TEMPLATE_CONTEXT_PROCESSORS =(
 	"django.core.context_processors.i18n",
 	"django.core.context_processors.media",
 	"django.core.context_processors.static",
-	"django.contrib.messages.context_processors.messages"
-)
-
-
-TEMPLATE_CONTEXT_PROCESSORS += (
-    'django_browserid.context_processors.browserid_form',
-    'django.core.context_processors.request'
+	"django.contrib.messages.context_processors.messages",
+	'django.core.context_processors.request',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 2
