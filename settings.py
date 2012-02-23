@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'Energapps',                      # Or path to database file if using sqlite3.
+        'NAME': 'db.sqlite3',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -102,10 +102,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     )
 
-ROOT_URLCONF = 'mysite.urls'
+ROOT_URLCONF = '3yp.urls'
 
 TEMPLATE_DIRS = (
-    '/Users/Trinity/3yp/mysite/mytemplates'
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     )
@@ -118,13 +117,29 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'energapp',
-    'registration',
+    #'registration',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 
     )
+
+TEMPLATE_CONTEXT_PROCESSORS =(
+	"django.contrib.auth.context_processors.auth",
+	"django.core.context_processors.debug",
+	"django.core.context_processors.i18n",
+	"django.core.context_processors.media",
+	"django.core.context_processors.static",
+	"django.contrib.messages.context_processors.messages"
+)
+
+
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'django_browserid.context_processors.browserid_form',
+    'django.core.context_processors.request'
+)
+
 ACCOUNT_ACTIVATION_DAYS = 2
 EMAIL_HOST = ''
 EMAIL_USE_TLS = 'True'
@@ -177,3 +192,8 @@ LOGGING = {
     }
 }
 """
+
+try:
+	from local_settings import *
+except ImportError as e:
+	pass
