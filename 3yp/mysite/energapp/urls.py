@@ -3,23 +3,29 @@ from django.views.generic import DetailView, ListView
 #from django.views.generic import direct_to_template
 from energapp.models import *
 from mysite.energapp import views
+from django.views.generic.simple import redirect_to, direct_to_template
+from django.views.generic import TemplateView
 
 urlpatterns = patterns('',
-    #url(r'^$',
-    #    DetailView.as_view(
-    #        model=Catz,
-    #        template_name='energapp/index.html')),
-    #url(r'^(?P<pk>\d+)/$',
-    #    DetailView.as_view(
-    #        model=Poll,
-    #        template_name='polls/detail.html')),
-    #url(r'^(?P<pk>\d+)/results/$',
-    #    DetailView.as_view(
-    #        model=Poll,
-    #        template_name='polls/results.html'),
-    #    name='polls_results'),
-    #url(r'^(?P<poll_id>\d+)/vote/$', 'polls.views.vote'),
-    #url(r'^(?P<poll_id>\d+)/addchoice/$','polls.views.add_choice'),
-    url(r'^$', 'energapp.views.catz'),
-    #url(r'^(?P<poll_id>\d+)/close/$', 'polls.views.closePoll')
+    url(r'^$',
+        ListView.as_view(
+            queryset=Appliance.objects.order_by('-name'),
+            context_object_name='appliances',
+            template_name='index.html')), #home page list
+    url(r'^(?P<username>\w+)/$', redirect_to, {'url': '/energapp/'}), #homepage redirection of a user    url(r'^$', 'energapp.views.home'),  #home page vie
+    url(r'^(?P<username>\w+)/settings/$', 'energapp.views.profSettings', name="user-settings"), #settings page
+    url(r'^(?P<username>\w+)/settings/pointsReset/$', 'energapp.views.pointsReset', name="user-reset"), #points reset page
+    url(r'^(?P<username>\w+)/settings/addAppliance/$', 'energapp.views.addAppliance', name="user-appliances"),#add new appliance page
+    url(r'^(?P<username>\w+)/settings/uploadFrequency/$', 'energapp.views.uploadFreq', name="user-freq"),#upload frequency men
+    url(r'^(?P<username>\w+)/upload/$', 'energapp.views.uploader', name="user-uploader"), #uploader of the data
+    url(r'^about/',
+        TemplateView.as_view(
+            template_name="about.html"),
+        name="about"),
+    url(r'^topsavers/$',
+        ListView.as_view(
+            queryset=UserProfile.objects.order_by('-points'),
+            context_object_name='savers_list',
+            template_name='topsavers.html'),
+        name="user-top"), #top savers list
 )

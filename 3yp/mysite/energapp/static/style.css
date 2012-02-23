@@ -4,3 +4,26 @@ body {
 ul {
     list-style:none;
 }
+h1, .freq {
+    text-transform:capitalize;
+}
+.important {
+    color: rgb(71, 101, 64);
+    font-weight: bold;
+    font-size: 28px;
+}
+.error {
+    color: red;
+    font-weight: bold;
+    font-size: larger;
+}
+.topsaverslist {
+    text-transform: capitalize;
+}
+.pointz {
+    color: rgb(71, 101, 64);
+    font-weight: bold;
+}
+.options {
+    list-style: none;
+}
