@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <h2>Upload frequency.</h2></br>
+    <p>Change your upload frequency by selecting a choice in the option menu below.</p>
+    <form name="appliances" action="/energapp/{{ user }}/settings/uploadFrequency/" method="POST">
+        {% csrf_token %}
+        <ul class="options">
+            <li><input type="radio" name="choice" value="daily" /> Daily</li>
+            <li><input type="radio" name="choice" value="weekly" /> Weekly</li>
+            <li><input type="radio" name="choice" value="monthly" /> Monthly</li>
+        </ul>
+        <input type="submit" class="btn-primary" value="Apply">
+    </form>
+    <a href="/">Finished? Go back to your page.</a>
+</div>
+{% endblock %}

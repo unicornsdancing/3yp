@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container">
+        <h2>Add a new appliance to your account.</h2></br>
+        <p>Type in the name of your appliance and its cost per W and click add:</p>
+        <form name="appliances" action="/energapp/{{ user }}/settings/addAppliance/" method="POST">
+            {% csrf_token %}
+                <input type="text" name="newAppliance" placeholder="appliance name"/></br>
+                <input type="text" name="userCost" placeholder="cost"/>
+                <input type="submit" class="btn-primary" value="Add">
+        </form>
+        <a href="/">Finished? Go back to your page.</a>
+    </div>
+{% endblock %}
