@@ -76,4 +76,4 @@ def addAppliance(request, username):
     return HttpResponseRedirect('/energapp/{}/settings/addAppliance'.format(user.user)) #return to the same page again
 
 def about(request):
-    return render_to_response("abojhut.html")
+    return render_to_response("about.html")

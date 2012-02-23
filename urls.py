@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'', include('energapp.urls')),
-    #url(r'^auth/', include ('registration.urls')),
+    url(r'^auth/', include ('registration.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
 )

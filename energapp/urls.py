@@ -12,7 +12,6 @@ urlpatterns = patterns('',
             queryset=Appliance.objects.order_by('-name'),
             context_object_name='appliances',
             template_name='index.html')), #home page list
-    #This line fucks everything up: 
     url(r'^(?P<username>\w+)/settings/$', 'energapp.views.profSettings', name="user-settings"), #settings page
     url(r'^(?P<username>\w+)/settings/pointsReset/$', 'energapp.views.pointsReset', name="user-reset"), #points reset page
     url(r'^(?P<username>\w+)/settings/addAppliance/$', 'energapp.views.addAppliance', name="user-appliances"),#add new appliance page
