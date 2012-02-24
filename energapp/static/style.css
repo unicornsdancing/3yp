@@ -27,3 +27,16 @@ h1, .freq {
 .options {
     list-style: none;
 }
+.points_table {
+    text-align: center;
+}
+.points_table_caption {
+    font-weight: bold;
+}
+#personal_points {
+    float: left;
+    margin-right: 30px;
+}
+#server_points {
+    margin-bottom: 100px;
+}
