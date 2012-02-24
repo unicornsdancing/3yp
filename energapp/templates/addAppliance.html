@@ -5,7 +5,7 @@
     <div class="container">
         <h2>Add a new appliance to your account.</h2></br>
         <p>Type in the name of your appliance and its cost per W and click add:</p>
-        <form name="appliances" action="/energapp/{{ user }}/settings/addAppliance/" method="POST">
+        <form name="appliances" action="/{{ user }}/settings/addAppliance/" method="POST">
             {% csrf_token %}
                 <input type="text" name="newAppliance" placeholder="appliance name"/></br>
                 <input type="text" name="userCost" placeholder="cost"/>

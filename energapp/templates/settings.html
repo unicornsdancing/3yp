@@ -4,9 +4,9 @@
 {% block content %}
 <h2>Settings</h2>
     <ul class="list">
-        <li><a href="/energapp/{{ user.get_profile.user }}/settings/uploadFrequency/">Upload Frequency</a></li>
+        <li><a href="/{{ user.get_profile.user }}/settings/uploadFrequency/">Upload Frequency</a></li>
         <li><a href="pointsReset/" onclick="return confirm('Are you sure you want to reset your {{ user.get_profile.points }} point(s)?')">Reset points</a></li>
-        <li><a href="/energapp/{{ user.get_profile.user }}/settings/addAppliance/">Add new appliance</a></li>
+        <li><a href="/{{ user.get_profile.user }}/settings/addAppliance/">Add new appliance</a></li>
     </ul>
 
 {% endblock %}

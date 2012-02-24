@@ -5,7 +5,7 @@
 <div class="container">
     <h2>Upload frequency.</h2></br>
     <p>Change your upload frequency by selecting a choice in the option menu below.</p>
-    <form name="appliances" action="/energapp/{{ user }}/settings/uploadFrequency/" method="POST">
+    <form name="appliances" action="/{{ user }}/settings/uploadFrequency/" method="POST">
         {% csrf_token %}
         <ul class="options">
             <li><input type="radio" name="choice" value="daily" /> Daily</li>

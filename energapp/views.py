@@ -73,7 +73,7 @@ def addAppliance(request, username):
 
         user.appliance_set.add(Appliance(name=appliance,profile=user,cost=ucost)) #create a new appliance object and add to user's profile
         user.save() #save user
-    return HttpResponseRedirect('/energapp/{}/settings/addAppliance'.format(user.user)) #return to the same page again
+    return HttpResponseRedirect('/{}/settings/addAppliance'.format(user.user)) #return to the same page again
 
 def about(request):
     return render_to_response("about.html")
