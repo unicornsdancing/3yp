@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.core.urlresolvers import reverse
 import datetime
 import logging
+import csv
 
 
 @login_required
@@ -38,12 +39,14 @@ def uploadFreq(request, username):
 @login_required
 def uploader(request, username):
     user = get_object_or_404(User, username=username)
+    if request.method == 'POST':
+        with open('data.csv', 'rb') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                print "cat"
     #create context
     #add user to context
     return render_to_response('uploader.html/',context_instance=RequestContext(request))
-
-def generateSheet(request):
-    return HttpResponse("generated sheet")
 
 def pointsCalc(request):
     return HttpResponse("points: 9992")

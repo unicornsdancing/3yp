@@ -3,4 +3,8 @@
 
 {% block content %}
     <h3>Uploader</h3></br>
+    <form name="appliances" action="/{{ user }}/upload/" method="POST">
+        {% csrf_token %}
+        <input type="submit" class="btn-primary" value="Add">
+    </form>
 {% endblock %}
