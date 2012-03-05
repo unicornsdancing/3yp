@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 import datetime
 import logging
 import csv
-
+from django import forms
 
 @login_required
 def profSettings(request, username):
@@ -36,17 +36,43 @@ def uploadFreq(request, username):
             user.save() #save or leave the frequency
     return HttpResponseRedirect('/')
 
+###############################################################
+#@login_required
+#def uploader(request, username):
+ #   user = get_object_or_404(User, username=username)
+  #  if request.method == 'GET': #if get
+   #     return render_to_response('uploader.html',{'user':user},context_instance=RequestContext(request)) #render the pag
+    #elif request.method == 'POST':
+     #   with open('data.csv', 'rb') as f:
+      #      reader = csv.reader(f)
+       #     for row in reader:
+        #        return HttpResponse(row)
+
 @login_required
-def uploader(request, username):
+def uploadFunc(request, username):
     user = get_object_or_404(User, username=username)
-    if request.method == 'POST':
-        with open('data.csv', 'rb') as f:
+    if request.method == 'GET':
+        return render_to_response('uploader.html',{'user':user},context_instance=RequestContext(request))
+    elif request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            path = _handle_uploaded_file(request.FILES['file'])
+            request.session['uploaded_file'] = path
+    lines = []
+    if request.session.get("uploaded_file", None):
+        with open(request.session.pop("uploaded_file"), 'rb') as f:
             reader = csv.reader(f)
-            for row in reader:
-                print "cat"
-    #create context
-    #add user to context
-    return render_to_response('uploader.html/',context_instance=RequestContext(request))
+            for m in reader:
+                lines.append(m)
+    return render_to_response('index.html', { 'file_lines': lines }, context_instance=RequestContext(request))
+
+
+def _handle_uploaded_file(source):
+    fd, filepath = tempfile.mkstemp(prefix=source.name, dir=FILE_UPLOAD_DIR)
+    with open(filepath, 'wb') as dest:
+        shutil.copyfileobj(source, dest)
+    return filepath
+#######################################################################
 
 def pointsCalc(request):
     return HttpResponse("points: 9992")

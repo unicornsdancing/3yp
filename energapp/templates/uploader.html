@@ -5,6 +5,7 @@
     <h3>Uploader</h3></br>
     <form name="appliances" action="/{{ user }}/upload/" method="POST">
         {% csrf_token %}
-        <input type="submit" class="btn-primary" value="Add">
+        <input type="file" id="file" name="file" />
+        <input type="submit" class="btn-primary" value="Upload">
     </form>
 {% endblock %}

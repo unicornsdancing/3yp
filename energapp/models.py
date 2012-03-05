@@ -2,6 +2,7 @@ import datetime
 from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User, UserManager
+from django import forms
 
 UPLOAD_CHOICES = (
     ('weekly', 'Week'),
@@ -34,3 +35,6 @@ class Appliance(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class UploadFileForm(forms.Form):
+    file = forms.FileField()

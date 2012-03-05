@@ -65,15 +65,20 @@
     <h2>Overall consumption:</h2> <p><span class="important">{{ user.get_profile.consumption }} W</span></p>
     <h2>Share your progress:</h2><p><a href="https://twitter.com/share" class="twitter-share-button" data-text="I have gained {{ user.get_profile.points }} points!" data-via="unicorndancing" data-size="large" data-hashtags="energapp">Tweet</a></p>
     <h2>Upload frequency:</h2><p class="freq">{{ user.get_profile.uploadFrequency }}</p>
-    <h2>Data about your consumption:</h2><p class="error">You haven't uploaded anything yet!</p>
+    <h2>Data about your consumption:</h2>
+        <table>
+            <tr>
+                <td>{{ file_lines }}</td>
+            </tr>
+        </table>
     <h2>Your appliances:</h2>
-    <ul class="unordered">
-        {% for ap in appliances %}
-        {% if ap.profile == user.get_profile %}
-        <li>{{  ap.name  }} (cost per unit: {{ ap.cost }})</li>
-        {% endif %}
-        {% endfor %}
-    </ul>
+        <ul class="unordered">
+            {% for ap in appliances %}
+            {% if ap.profile == user.get_profile %}
+            <li>{{  ap.name  }} (cost per unit: {{ ap.cost }})</li>
+            {% endif %}
+            {% endfor %}
+        </ul>
     <h2>Money spent on energy overall:</h2><!--need to set up a price pr kw per appliance-->
     <h2>Your personalised tips:</h2><!--if appliance.type=teapot, if teapot's cons was > w/e <p>you could try to use teapot less?</p>...-->
     <!--hardcoded for now-->

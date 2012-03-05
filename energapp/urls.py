@@ -12,11 +12,12 @@ urlpatterns = patterns('',
             queryset=Appliance.objects.order_by('-name'),
             context_object_name='appliances',
             template_name='index.html')), #home page list
+    #url(r'^$', 'energapp.views.index', name="index"),
     url(r'^(?P<username>\w+)/settings/$', 'energapp.views.profSettings', name="user-settings"), #settings page
     url(r'^(?P<username>\w+)/settings/pointsReset/$', 'energapp.views.pointsReset', name="user-reset"), #points reset page
     url(r'^(?P<username>\w+)/settings/addAppliance/$', 'energapp.views.addAppliance', name="user-appliances"),#add new appliance page
     url(r'^(?P<username>\w+)/settings/uploadFrequency/$', 'energapp.views.uploadFreq', name="user-freq"),#upload frequency men
-    url(r'^(?P<username>\w+)/upload/$', 'energapp.views.uploader', name="user-uploader"), #uploader of the data
+    url(r'^(?P<username>\w+)/upload/$', 'energapp.views.uploadFunc', name="user-uploader"), #uploader of the data
     url(r'^about/$',
         TemplateView.as_view(
             template_name="about.html"),
