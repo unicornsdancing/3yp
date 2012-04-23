@@ -29,6 +29,7 @@ h1, .freq {
 }
 .points_table {
     text-align: center;
+    padding: 5px;
 }
 .points_table_caption {
     font-weight: bold;

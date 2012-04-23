@@ -68,12 +68,16 @@
     <h2>Data about your consumption:</h2>
         <table border="2" class ="points_table">
             <tr>
-                <td>{{ file_lines }}</td>
+                <td><strong>Appliance</strong></td>
+                <td>Mains</td>
+                <td>Kitchen outlets</td>
             </tr>
             <tr>
-                <td>{{ file_lines }}</td>
+                <td><strong>Usage</strong></td>
+                <td>509</td>
+                <td>432</td>
             </tr>
-        </table>
+        </table></br>
     <h2>Your appliances:</h2>
         <ul class="unordered">
             {% for ap in appliances %}
@@ -98,10 +102,8 @@
     <p>We have also noticed you have been watching TV during the night time, which is a great way to save up on energy, but make sure it does not mess with your
         daily routines! It is important for you to get a good night sleep.</p></br>
 
-    <form action="/" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Generate your personal summary sheet" class="btn-primary"/>
-    </form>
+    <h2>Your personal summary graph</h2>
+    <p><img src="/"/></p>
     {% else %}
     <p>Hello!</p>
     <p>Our Energapp will let you track and share your energy usage with friends. You need to have a CSV of your energy usage that you can upload from your smart meter. </p>
