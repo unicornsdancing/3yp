@@ -63,7 +63,9 @@
     <h1>{{ user.username }}</h1><h6>(stats and summary)</h6></br>
     <h2>Points: </h2> <p><span class="important">{{ user.get_profile.points }}</span></p>
     <h2>Overall consumption:</h2> <p><span class="important">{{ user.get_profile.consumption }} W</span></p>
-    <h2>Share your progress:</h2><p><a href="https://twitter.com/share" class="twitter-share-button" data-text="I have gained {{ user.get_profile.points }} points!" data-via="unicorndancing" data-size="large" data-hashtags="energapp">Tweet</a></p>
+<h2>Money spent on energy overall:</h2><!--need to set up a price pr kw per appliance-->
+    <p><span class="important">£29.12</span></p>   
+ <h2>Share your progress:</h2><p><a href="https://twitter.com/share" class="twitter-share-button" data-text="I have gained {{ user.get_profile.points }} points!" data-via="unicorndancing" data-size="large" data-hashtags="energapp">Tweet</a></p>
 				<p><a name="fb_share" type="button"></a> 
 					<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">
 				</script></p>
@@ -100,8 +102,6 @@
             {% endif %}
             {% endfor %}
         </ul>
-    <h2>Money spent on energy overall:</h2><!--need to set up a price pr kw per appliance-->
-    <p>£29.12</p>
     <h2>Your personalised tips:</h2><!--if appliance.type=teapot, if teapot's cons was > w/e <p>you could try to use teapot less?</p>...-->
     <!--hardcoded for now-->
     <p>You are doing great! You could try save up energy next week by:</p>
